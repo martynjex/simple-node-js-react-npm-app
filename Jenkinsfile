@@ -8,17 +8,17 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'make build' 
+                sh '/usr/bin/make build' 
             }
         }
         stage('Test') {
             steps {
-                sh 'make test'
+                sh '/usr/bin/make test'
             }
         }
         stage('Deliver') {
             steps {
-                sh 'make deliver'
+                sh '/usr/bin/make deliver'
             }
         }
     }

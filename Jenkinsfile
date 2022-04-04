@@ -8,18 +8,22 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh '/usr/bin/make build' 
+                withEnv(["PATH=/usr/bin:$PATH"]) {
+                    sh '/usr/bin/make build' 
+                }
             }
         }
         stage('Test') {
             steps {
-                sh '/usr/bin/make test'
-            }
+                withEnv(["PATH=/usr/bin:$PATH"]) {
+                    sh '/usr/bin/make test' 
+                }            }
         }
         stage('Deliver') {
             steps {
-                sh '/usr/bin/make deliver'
-            }
+                withEnv(["PATH=/usr/bin:$PATH"]) {
+                    sh '/usr/bin/make deliver' 
+                }            }
         }
     }
 }

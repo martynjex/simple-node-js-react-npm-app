@@ -1,29 +1,26 @@
 pipeline {
     agent {
-        docker {
-            image 'node:lts-bullseye-slim' 
-            args '-p 3000:3000' 
+        {
+            any {
+                image 'node:12.16.2' args '-p 3000:3000'
+            }
         }
     }
     stages {
         stage('Build') { 
             steps {
-                withEnv(["PATH=/usr/bin:$PATH"]) {
-                    sh 'make build' 
-                }
+                sh 'make build'
             }
         }
         stage('Test') {
             steps {
-                withEnv(["PATH=/usr/bin:$PATH"]) {
-                    sh 'make test' 
-                }            }
+                sh 'make test' 
+            }
         }
         stage('Deliver') {
             steps {
-                withEnv(["PATH=/usr/bin:$PATH"]) {
-                    sh 'make deliver' 
-                }            }
+                sh 'make deliver' 
+            }
         }
     }
 }

@@ -9,20 +9,20 @@ pipeline {
         stage('Build') { 
             steps {
                 withEnv(["PATH=/usr/bin:$PATH"]) {
-                    sh 'make build' 
+                    bash 'make build' 
                 }
             }
         }
         stage('Test') {
             steps {
                 withEnv(["PATH=/usr/bin:$PATH"]) {
-                    sh 'make test' 
+                    bash 'make test' 
                 }            }
         }
         stage('Deliver') {
             steps {
                 withEnv(["PATH=/usr/bin:$PATH"]) {
-                    sh 'make deliver' 
+                    bash 'make deliver' 
                 }            }
         }
     }

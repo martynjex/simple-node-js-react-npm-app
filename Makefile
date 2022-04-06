@@ -1,4 +1,4 @@
-SHELL := /bin/bash
+SHELL := /bin/sh
 CURRENT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 all: build test deliver
